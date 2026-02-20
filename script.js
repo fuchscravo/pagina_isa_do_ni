@@ -1,13 +1,18 @@
-function atualizarResultado() {
+let interagiuComRange = false;
 
-let intensidadeInput = document.getElementById("Intensidade");
+const intensidadeInput = document.getElementById("Intensidade");
+const resultado = document.getElementById("resultado");
+const botao = document.getElementById("btnCalcular");
 
-if(intensidadeInput) {
-    intensidadeInput.addEventListener("input", function() {
+intensidadeInput.addEventListener("input", function () {
+    interagiuComRange = true;
+});
+
+botao.addEventListener("click", function () {
+    if (interagiuComRange) {
         let valor = parseInt(intensidadeInput.value);
-        document.getElementById("resultado").innerHTML = "A intensidade do amor é: " + valor + "% ❤️";
-    });
-}
-}
-
-atualizarResultado();
+        resultado.innerHTML = "A intensidade do amor é: " + valor + "% ❤️";
+    } else {
+        resultado.innerHTML = "Interaja com o slider antes de calcular.";
+    }
+});
